@@ -1,41 +1,57 @@
 <?php
 
-class Article {
+namespace Entities;
+
+class Article
+{
     private $id;
     private $user_id;
     private $titre;
     private $description;
     private $modifier_le;
-}
 
-public function getID() {
-    return $id;
-}
 
-public function getUserID() {
-    return $user_id;
-}
+    public function getID()
+    {
+        return $this->id;
+    }
 
-public function getTitre() {
-    return $titre;
-}
+    public function getUserID()
+    {
+        return $this->user_id;
+    }
 
-public function getDescription() {
-    return $description;
-}
+    public function getTitre()
+    {
+        return $this->titre;
+    }
 
-public function getDateModif() {
-    return $modifier_le;
-}
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
-public function setTitre($new_title) {
-    $titre = $new_title;
-}
+    public function getDateModif()
+    {
+        return $this->modifier_le;
+    }
 
-public function setDescription($new_description) {
-    $description = $new_description;
-}
+    public function setId($new_id) {
+        $this->id = $new_id;
+    }
 
-public function setDateModif($new_date) {
-    $modifier_le = $new_date;
+    public function setTitre($new_title)
+    {
+        $this->titre = $new_title;
+    }
+
+    public function setDescription($new_description)
+    {
+        $this->description = $new_description;
+    }
+
+    public function setModifier_le($new_date)
+    {
+        $this->modifier_le = $new_date;
+    }
 }
