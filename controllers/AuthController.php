@@ -10,18 +10,23 @@ class AuthController
 {
 
     public function login(User $user) {
+        require ('../views/login.php');
         $user_tab = new UserManager();
-        if ($user_tab->findUser($user) != null) {
-            if ($user->getPassword() == $user_tab->findUser($user)->getPassword()) {
-                session_start();
-                $_SESSION['pseudo'] = $user->getPseudo();
-                $_SESSION['password'] = $user->getPassword();
-                $_SESSION['role'] = $user->getRole();
-                $_SESSION['date_creation'] = $user->getDateCreation();
+        try {
+            if ($user_tab->findUser($user) != null) {
+                if ($user->getPassword() == $user_tab->findUser($user)->getPassword()) {
+                    session_start();
+                    $_SESSION['pseudo'] = $user->getPseudo();
+                    $_SESSION['password'] = $user->getPassword();
+                    $_SESSION['role'] = $user->getRole();
+                    $_SESSION['date_creation'] = $user->getDateCreation();
+                }
+            } else {
+                throw new \Exception('Votre Pseudo ou votre Mot de Passe sont éronnés');
             }
         }
-        else {
-            echo "Votre pseudo ou votre mot de passe sont éronnés";
+        catch(\Exception $e) {
+            echo 'Erreur : '. $e->getMessage();
         }
     }
 
@@ -30,33 +35,32 @@ class AuthController
         session_destroy();
     }
 
-    public function inscription()
-    {
-        /*$user = new User();
-        $user_tab = new UserTab();
-        $user->setPseudo($_POST['pseudo']);
-        $user->setRole("Utilisateur");
+    public function register() {
+        if (isset($_POST['pseudo'])) {
 
-        //On vérifie que les mots de passe soient identiques
-        if ($_POST['password'] == $_POST['confirm_password']) {
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user->setPassword($password);
-        } else {
-            //Message Erreur
-        }
+            $user = new User();
+            $user_tab = new UserManager();
+            $user->setPseudo($_POST['pseudo']);
+            $user->setRole("Utilisateur");
 
-        $users = $user_tab->getAll();
+            if ($_POST['password'] == $_POST['confirm_password']) {
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $user->setPassword($password);
+            } else {
 
-        //On vérifie qu'il n'y ait pas d'autres utilisateurs porant le même pseudo
-        foreach ($users as $currentUser) {
-            if ($user->getPseudo() == $currentUser->getPseudo()) {
-                //Message Erreur
             }
-        }
 
-        $user_tab->addUser($user);
-        //Message validation + Header Accueil
-        //header('../views/inscription.php');*/
-        echo "Bonjour";
+           /* if ($user_tab->findUser($user)) {
+
+            }*/
+
+            $user_tab->addUser($user);
+
+            echo "Bonjour";
+        }
+        else {
+            echo "fail";
+        }
+        //require('../views/register.php');
     }
 }

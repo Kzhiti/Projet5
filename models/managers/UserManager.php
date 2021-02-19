@@ -25,15 +25,10 @@ class UserManager
 
     public function findUser(User $user)
     {
-        $req = $this->db->prepare('SELECT pseudo FROM user WHERE pseudo = '.$user->getPseudo());
+        $req = $this->db->prepare('SELECT * FROM user WHERE pseudo = '.$user->getPseudo());
         $req->execute();
 
-        if ($req) {
-            return $user;
-        }
-        else {
-            return null;
-        }
+        return $req->fetch();
     }
 
 
