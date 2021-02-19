@@ -20,21 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28ae162-77c7-49eb-be67-375dc526e67c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/managers/UserManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Projet5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Projet5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/InscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/InscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/entities/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/entities/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/entities/Commentaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/entities/Commentaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/entities/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/entities/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/entities/UserTab.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/InscriptionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/managers/UserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/managers/UserManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -46,6 +47,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
   </component>
   <component name="ProjectId" id="1ny2BritpyAfKkKrX3V07uUgt9s" />
   <component name="ProjectLevelVcsManager">
@@ -73,7 +79,10 @@
       <workItem from="1612943794648" duration="1914000" />
       <workItem from="1612945795408" duration="6094000" />
       <workItem from="1613121350432" duration="1913000" />
-      <workItem from="1613134595080" duration="3753000" />
+      <workItem from="1613134595080" duration="4120000" />
+      <workItem from="1613644253082" duration="28000" />
+      <workItem from="1613685005408" duration="2867000" />
+      <workItem from="1613726607648" duration="1731000" />
     </task>
     <servers />
   </component>
@@ -93,18 +102,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613136657745">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613727120739">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613136657745" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613727120739" />
     <state x="757" y="243" key="NewPhpClassDialog" timestamp="1612947259471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="757" y="243" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612947259471" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1613136638316">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1613727129254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613136638316" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613727129254" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

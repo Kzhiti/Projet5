@@ -23,6 +23,19 @@ class UserManager
         $req->execute();
     }
 
+    public function findUser(User $user)
+    {
+        $req = $this->db->prepare('SELECT pseudo FROM user WHERE pseudo = '.$user->getPseudo());
+        $req->execute();
+
+        if ($req) {
+            return $user;
+        }
+        else {
+            return null;
+        }
+    }
+
 
     public function getAll()
     {

@@ -1,10 +1,35 @@
 <?php
 
+
 namespace Controllers;
 
 use Entities\User;
-class InscriptionController
+use Managers\UserManager;
+
+class AuthController
 {
+
+    public function login(User $user) {
+        $user_tab = new UserManager();
+        if ($user_tab->findUser($user) != null) {
+            if ($user->getPassword() == $user_tab->findUser($user)->getPassword()) {
+                session_start();
+                $_SESSION['pseudo'] = $user->getPseudo();
+                $_SESSION['password'] = $user->getPassword();
+                $_SESSION['role'] = $user->getRole();
+                $_SESSION['date_creation'] = $user->getDateCreation();
+            }
+        }
+        else {
+            echo "Votre pseudo ou votre mot de passe sont éronnés";
+        }
+    }
+
+    public function logout() {
+        session_unset();
+        session_destroy();
+    }
+
     public function inscription()
     {
         /*$user = new User();

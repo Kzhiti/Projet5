@@ -9,7 +9,7 @@
 <body>
     <h1>Inscription</h1>
     <!-- Pas sur d'action -->
-    <form class="" action="../controllers/InscriptionController.php" method="POST">
+    <form class="" action="../controllers/AuthController.php" method="POST">
 
         <label for="pseudo">Pseudo</label>
         <input type="text" id="pseudo" name="pseudo" required>
