@@ -8,25 +8,23 @@ use Managers\UserManager;
 
 class AuthController
 {
+    private $user_manager;
+
+    public function __construct() {
+        $this->user_manager = new UserManager();
+    }
 
     public function login(User $user) {
         require ('../views/login.php');
-        $user_tab = new UserManager();
-        try {
-            if ($user_tab->findUser($user) != null) {
-                if ($user->getPassword() == $user_tab->findUser($user)->getPassword()) {
-                    session_start();
-                    $_SESSION['pseudo'] = $user->getPseudo();
-                    $_SESSION['password'] = $user->getPassword();
-                    $_SESSION['role'] = $user->getRole();
-                    $_SESSION['date_creation'] = $user->getDateCreation();
-                }
-            } else {
-                throw new \Exception('Votre Pseudo ou votre Mot de Passe sont éronnés');
+
+        if ($this->user_manager->findUser($user)) {
+            if ($user->getPassword() == $this->user_manager->findUser($user)->getPassword()) {
+                session_start();
+                $_SESSION['pseudo'] = $user->getPseudo();
+                $_SESSION['password'] = $user->getPassword();
+                $_SESSION['role'] = $user->getRole();
+                $_SESSION['date_creation'] = $user->getDateCreation();
             }
-        }
-        catch(\Exception $e) {
-            echo 'Erreur : '. $e->getMessage();
         }
     }
 
@@ -36,31 +34,32 @@ class AuthController
     }
 
     public function register() {
+        require ('../views/register.php');
         if (isset($_POST['pseudo'])) {
 
             $user = new User();
-            $user_tab = new UserManager();
-            $user->setPseudo($_POST['pseudo']);
-            $user->setRole("Utilisateur");
-
-            if ($_POST['password'] == $_POST['confirm_password']) {
-                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $user->setPassword($password);
-            } else {
-
+            $error = 0;
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo'])<3 || mb_strlen($_POST['pseudo'])>19) {
+                $error++;
+            }
+            else {
+                if ($this->user_manager->findUser($_POST['pseudo'])) {
+                    $error++;
+                }
+            }
+            if (empty($_POST['password']) || $_POST['password'] != $_POST['confirm_password']) {
+                $error++;
             }
 
-           /* if ($user_tab->findUser($user)) {
-
-            }*/
-
-            $user_tab->addUser($user);
-
-            echo "Bonjour";
+            if ($error === 0) {
+                $user->setPseudo($_POST['pseudo']);
+                $user->setRole("Utilisateur");
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $user->setPassword($password);
+                $this->user_manager->addUser($user);
+            }
+            header('Location: index.php?action=login');
         }
-        else {
-            echo "fail";
-        }
-        //require('../views/register.php');
+        return;
     }
 }

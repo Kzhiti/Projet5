@@ -9,24 +9,31 @@ class UserManager
     private $db;
 
     public function __construct() {
-        $this->db = new \PDO('mysql:host=localhost;dbname=projet5;charset=utf8_general_ci', 'root', 'root');
+        try {
+            $this->db = new \PDO('mysql:host=127.0.0.1;port=3306;dbname=projet5', 'root', 'root', array(\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION));
+        }
+        catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function addUser(User $user)
     {
+        var_dump($this->db);
         $req = $this->db->prepare('INSERT INTO user(pseudo, password, role, date_creation) 
-                     VALUES(:pseudo, :password, :role, :date_creation)');
-        $req->bindValue(':pseudo', $user->getPseudo());
+                     VALUES(?,?,?,NOW())');
+        /*$req->bindValue(':pseudo', $user->getPseudo());
         $req->bindValue(':password', $user->getPassword());
         $req->bindValue(':role', $user->getRole());
-        $req->bindValue(':date_creation', $user->getDateCreation());
-        $req->execute();
+        $req->bindValue(':date_creation', date("d.m.y"));*/
+        $req->execute(array($user->getPseudo(), $user->getPassword(), $user->getRole()));
+        echo"success ";
     }
 
-    public function findUser(User $user)
+    public function findUser($username)
     {
-        $req = $this->db->prepare('SELECT * FROM user WHERE pseudo = '.$user->getPseudo());
-        $req->execute();
+        $req = $this->db->prepare('SELECT * FROM user WHERE pseudo = ?');
+        $req->execute(array($username));
 
         return $req->fetch();
     }

@@ -3,16 +3,12 @@
 require "../vendor/autoload.php";
 
 use Controllers\AuthController;
-
-require ('../controllers/AuthController.php');
+use Controllers\ContactController;
 
 $action = $_GET['action'] ?? "";
 
 if ($action != "") {
     switch ($action) {
-        case 'registerPage' :
-            require ('../views/register.php');
-            break;
         case 'register' :
             $controller = new AuthController();
             $controller->register();
@@ -24,6 +20,10 @@ if ($action != "") {
         case 'logout' :
             $controller = new AuthController();
             $controller->logout();
+            break;
+        case 'contact' :
+            $controller = new ContactController();
+            $controller->contact();
             break;
     }
 }

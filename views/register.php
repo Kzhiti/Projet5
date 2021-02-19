@@ -3,23 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <title>Inscription</title>
-    <link href="style.css" rel="stylesheet" />
+    <link href="../public/css/style.css" rel="stylesheet" />
 </head>
-
+<header>
+    <h1 class="header_title">Le Développeur à toutes heures</h1>
+    <a href="../public/index.php?action=login">Se Connecter</a>
+    <a href="../public/index.php?action=register">S'inscrire</a>
+</header>
 <body>
-    <h1>Inscription</h1>
-    <form class="" action="../public/index.php?action=register" method="POST">
+<div class="main">
+    <div class="container">
+        <div class="booking-content">
+            <div class="booking-image">
+                <img class="booking-img" src="../public/img/Inscription.jpg" alt="Booking Image">
+            </div>
+            <div class="booking-form">
+                <h2>Veuillez vous inscrire</h2>
+                <form id="booking-form" action="../public/index.php?action=register" method="POST">
 
-        <label for="pseudo">Pseudo</label>
-        <input type="text" id="pseudo" name="pseudo" required>
+                    <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo">
 
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" placeholder="Mot de passe">
 
-        <label for="confirm_password">Confirmer le mot de passe</label>
-        <input type="password" id="confirm_password" name="confirm_password" required>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmer le mot de passe">
 
-        <button type="submit">S'inscrire</button>
-    </form>
+                    <button class="submit" type="submit">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<footer>
+
+</footer>
 </html>
