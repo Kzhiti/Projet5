@@ -9,6 +9,8 @@
     <h1 class="header_title">Le Développeur à toutes heures</h1>
     <a href="../public/index.php?action=login">Se Connecter</a>
     <a href="../public/index.php?action=register">S'inscrire</a>
+    <a href="../public/index.php">Accueil</a>
+    <a href="../public/index.php?action=logout">Deconnexion</a>
 </header>
 <body>
     <div class="main">
@@ -35,7 +37,7 @@
         <div class="div-container-photo-cv">
             <div class="div-content-photo-cv">
                 <div class="photo-cv-text">
-                    <p>ZHITI Kylian <br>Développeur Web<br><a href="">Voir mon CV</a></p>
+                    <p>ZHITI Kylian <br>Développeur Web<br><a href="../public/img/CV-Zhiti.pdf">Voir mon CV</a></p>
                 </div>
                 <div class="photo-cv-img">
                     <img class="photo-cv" src="../public/img/photo_cv.jpg" alt="Photo CV">

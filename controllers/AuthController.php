@@ -10,39 +10,63 @@ class AuthController
 {
     private $user_manager;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->user_manager = new UserManager();
     }
 
-    public function login(User $user) {
-        require ('../views/login.php');
+    public function login()
+    {
+        require('../views/login.php');
 
-        if ($this->user_manager->findUser($user)) {
-            if ($user->getPassword() == $this->user_manager->findUser($user)->getPassword()) {
-                session_start();
-                $_SESSION['pseudo'] = $user->getPseudo();
-                $_SESSION['password'] = $user->getPassword();
-                $_SESSION['role'] = $user->getRole();
-                $_SESSION['date_creation'] = $user->getDateCreation();
+        if (isset($_POST['pseudo'])) {
+            $error = 0;
+
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19) {
+                $error++;
+                echo "1";
+            } else {
+                if (!($this->user_manager->findUser($_POST['pseudo']))) {
+                    $error++;
+                    echo "2";
+                }
+            }
+            if (empty($_POST['password'])) {
+                $error++;
+                echo "3";
+            }
+
+            if ($error === 0) {
+                $user = $this->user_manager->findUser($_POST['pseudo']);
+                    $_SESSION['user'] = serialize($user);
+                    header('Location: index.php');
+                    return;
+            }
+            else {
+                //Erreur
+                header('Location: index.php?action=login');
+                return;
             }
         }
     }
 
-    public function logout() {
-        session_unset();
-        session_destroy();
+    public function logout()
+    {
+        unset($_SESSION['user']);
+        header('Location: index.php');
+        return;
     }
 
-    public function register() {
-        require ('../views/register.php');
+    public function register()
+    {
+        require('../views/register.php');
         if (isset($_POST['pseudo'])) {
 
             $user = new User();
             $error = 0;
-            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo'])<3 || mb_strlen($_POST['pseudo'])>19) {
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19) {
                 $error++;
-            }
-            else {
+            } else {
                 if ($this->user_manager->findUser($_POST['pseudo'])) {
                     $error++;
                 }

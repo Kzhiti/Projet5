@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "../vendor/autoload.php";
 
 use Controllers\AuthController;
@@ -15,7 +15,7 @@ if ($action != "") {
             break;
         case 'login' :
             $controller = new AuthController();
-            //$controller->login();
+            $controller->login();
             break;
         case 'logout' :
             $controller = new AuthController();

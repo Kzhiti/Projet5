@@ -9,6 +9,8 @@
     <h1 class="header_title">Le Développeur à toutes heures</h1>
     <a href="../public/index.php?action=login">Se Connecter</a>
     <a href="../public/index.php?action=register">S'inscrire</a>
+    <a href="../public/index.php">Accueil</a>
+    <a href="../public/index.php?action=logout">Deconnexion</a>
 </header>
 <body>
 <div class="main">
