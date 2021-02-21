@@ -7,10 +7,14 @@
 </head>
 <header>
     <h1 class="header_title">Le Développeur à toutes heures</h1>
-    <a href="../public/index.php?action=login">Se Connecter</a>
-    <a href="../public/index.php?action=register">S'inscrire</a>
+    <?php if(!isset($_SESSION['user'])) { ?>
+        <a href="../public/index.php?action=login">Se Connecter</a>
+        <a href="../public/index.php?action=register">S'inscrire</a>
+    <?php } ?>
     <a href="../public/index.php">Accueil</a>
-    <a href="../public/index.php?action=logout">Deconnexion</a>
+    <?php if(isset($_SESSION['user'])) { ?>
+        <a href="../public/index.php?action=logout">Deconnexion</a>
+    <?php } ?>
 </header>
 <body>
     <div class="main">

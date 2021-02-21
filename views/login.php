@@ -10,7 +10,9 @@
     <a href="../public/index.php?action=login">Se Connecter</a>
     <a href="../public/index.php?action=register">S'inscrire</a>
     <a href="../public/index.php">Accueil</a>
-    <a href="../public/index.php?action=logout">Deconnexion</a>
+    <?php if(isset($_SESSION['user'])) { ?>
+        <a href="../public/index.php?action=logout">Deconnexion</a>
+    <?php } ?>
 </header>
 <body>
 <div class="main">
@@ -21,6 +23,15 @@
             </div>
             <div class="booking-form">
                 <h2>Veuillez vous connecter</h2>
+                <br>
+                <?php if(isset($_SESSION['flash'])) { ?>
+                    <?php foreach($_SESSION['flash'] as $type => $message){?>
+                        <div>
+                            <?= $message; ?>
+                        </div>
+                    <?php } ?>
+                    <?php unset($_SESSION['flash']); ?>
+                <?php } ?>
                 <form id="booking-form" action="../public/index.php?action=login" method="POST">
 
                     <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo">
