@@ -11,6 +11,7 @@
         <a href="../public/index.php?action=login">Se Connecter</a>
         <a href="../public/index.php?action=register">S'inscrire</a>
     <?php } ?>
+    <a href="../public/index.php?action=listpost">Articles</a>
     <a href="../public/index.php">Accueil</a>
     <?php if(isset($_SESSION['user'])) { ?>
         <a href="../public/index.php?action=logout">Deconnexion</a>

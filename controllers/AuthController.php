@@ -24,33 +24,34 @@ class AuthController
 
         if (isset($_POST['pseudo'])) {
             $user = $this->user_manager->findUser($_POST['pseudo']);
-            $error = 0;
+            var_dump($user);
 
-            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19) {
-                // $error++;
-                SessionFlash::sessionFlash("Erreur",  "Pseudo Invalide");
-            } else {
-                if (!($user)) {
-                    // $error++;
-
-                    SessionFlash::sessionFlash("Erreur", "Pseudo Introuvable");
-                }
-            }
-            if (empty($_POST['password'])) {
-                //  $error++;
-                SessionFlash::sessionFlash("Erreur", "Mot de passe invalide");
-            }
-            if (!password_verify($_POST['password'], $user->getPassword())) {
-                SessionFlash::sessionFlash("Erreur", "Mot de passe incorrect");
-            }
-
-            if (/*$error === 0*/!(isset($_SESSION['flash']))) {
-                $_SESSION['user'] = serialize($user);
-                header('Location: index.php');
-                return;
+            if ($user == null) {
+                Session::setFlash("Erreur utilisateur introuvable", "Veuillez entrer un pseudo et un mot de passe valides");
             }
             else {
-                header('Location: index.php?action=login');
+                if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo'] || $_POST['pseudo'] == null) > 19) {
+                    Session::setFlash("Erreur pseudo invalide", "Veuillez réessayer");
+                } else {
+                    if (!($user)) {
+                        Session::setFlash("Erreur pseudo introuvable", "Veuillez réessayer");
+                    }
+                }
+                if (empty($_POST['password']) || $_POST['password'] == null) {
+                    Session::setFlash("Erreur mot de passe invalide", "Veuillez réessayer");
+                } else {
+                    if (!password_verify($_POST['password'], $user->getPassword())) {
+                        Session::setFlash("Erreur mot de passe incorrect", "Veuillez réessayer");
+                    }
+                }
+
+                if (!(isset($_SESSION['flash']))) {
+                    $_SESSION['user'] = serialize($user);
+                    header('Location: index.php');
+                    return;
+                } else {
+                    header('Location: index.php?action=login');
+                }
             }
         }
     }
@@ -68,27 +69,22 @@ class AuthController
         if (isset($_POST['pseudo'])) {
 
             $user = new User();
-          //  $error = 0;
-            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19) {
-               // $error++;
-                SessionFlash::sessionFlash("Erreur", "Pseudo Invalide");
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo'] || $_POST['pseudo'] == null) > 19) {
+                Session::setFlash("Erreur pseudo invalide",  "Veuillez réessayer");
             } else {
                 if ($this->user_manager->findUser($_POST['pseudo'])) {
-                   // $error++;
-                    SessionFlash::sessionFlash("Erreur", "Pseudo déjà utilisé");
+                    Session::setFlash("Erreur pseudo déjà utilisé", "Veuillez réessayer");
                 }
             }
-            if (empty($_POST['password'])) {
-              //  $error++;
-                SessionFlash::sessionFlash("Erreur", "Mot de passe invalide");
+            if (empty($_POST['password']) || $_POST['password'] == null) {
+                Session::setFlash("Erreur mot de passe invalide", "Veuillez réessayer");
             }
 
             if ($_POST['password'] != $_POST['confirm_password']) {
-              //  $error++;
-                SessionFlash::sessionFlash("Erreur", "Les mots de passe ne sont pas identiques");
+                Session::setFlash("Erreur les mots de passe ne sont pas identiques", "Veuillez réessayer");
             }
 
-            if (/*$error === 0*/!(isset($_SESSION['flash']))) {
+            if (!(isset($_SESSION['flash']))) {
                 $user->setPseudo($_POST['pseudo']);
                 $user->setRole("Utilisateur");
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -98,9 +94,6 @@ class AuthController
             }
             else {
                 header('Location: index.php?action=register');
-                foreach ($_SESSION['flash'] as $type => $message) {
-                    echo $message;
-                }
             }
         }
         return;

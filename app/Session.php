@@ -19,7 +19,10 @@ class Session
     }
 
     public static function setFlash($key, $value) {
-        $_SESSION['flash'][$key] = $value;
+        $_SESSION['flash'] = [
+            "type" => $key,
+            "content" => $value
+        ];
     }
 
 }

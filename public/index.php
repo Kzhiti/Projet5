@@ -4,6 +4,7 @@ require "../vendor/autoload.php";
 
 use Controllers\AuthController;
 use Controllers\ContactController;
+use Controllers\PostController;
 
 $action = $_GET['action'] ?? "";
 
@@ -24,6 +25,14 @@ if ($action != "") {
         case 'contact' :
             $controller = new ContactController();
             $controller->contact();
+            break;
+        case 'listpost' :
+            $controller = new PostController();
+            $controller->listPost();
+            break;
+        case 'post' :
+            $controller = new PostController();
+            $controller->post();
             break;
     }
 }

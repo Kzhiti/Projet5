@@ -41,6 +41,17 @@ class UserManager
         return null;
     }
 
+    public function findUserByID($id)
+    {
+        $req = $this->db->prepare('SELECT * FROM user WHERE id = ?');
+        $req->execute(array($id));
+        $data = $req->fetch();
+        if($data) {
+            return new User($data);
+        }
+        return null;
+    }
+
 
     public function getAll()
     {
