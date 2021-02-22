@@ -28,6 +28,30 @@ header a {
     cursor: pointer;
 }
 
+footer {
+    text-align: center;
+    height: 50px;
+    background-color: #111111;
+}
+
+.a-footer {
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.a-cv {
+    text-decoration: none;
+    color: #111111;
+}
+
+.a-cv:hover {
+    color: #ffffff;
+}
+
+.a-cv:visited {
+    color: #111111;
+}
+
 
 /* @extend display-flex; */
 display-flex, .booking-content {

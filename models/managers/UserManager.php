@@ -34,8 +34,11 @@ class UserManager
     {
         $req = $this->db->prepare('SELECT * FROM user WHERE pseudo = ?');
         $req->execute(array($username));
-
-        return $req->fetch();
+        $data = $req->fetch();
+        if($data) {
+            return new User($data);
+        }
+        return null;
     }
 
 

@@ -10,6 +10,21 @@ class User
     private $role;
     private $date_creation;
 
+    public function __construct(array $data = null) {
+        if($data) {
+            $this->hydrate($data);
+        }
+    }
+
+    private function hydrate($data) {
+        foreach($data as $key=>$value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
+
     public function getId()
     {
         return $this->id;
@@ -44,6 +59,7 @@ class User
         $this->pseudo = $new_pseudo;
     }
 
+
     public function setPassword($new_password)
     {
         $this->password = $new_password;
@@ -54,7 +70,7 @@ class User
         $this->role = $new_role;
     }
 
-    public function setDateCreation($new_date)
+    public function setDate_creation($new_date)
     {
         $this->date_creation = $new_date;
     }

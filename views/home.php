@@ -41,7 +41,7 @@
         <div class="div-container-photo-cv">
             <div class="div-content-photo-cv">
                 <div class="photo-cv-text">
-                    <p>ZHITI Kylian <br>Développeur Web<br><a href="../public/img/CV-Zhiti.pdf">Voir mon CV</a></p>
+                    <p>ZHITI Kylian <br>Développeur Web<br><a class="a-cv" href="../public/img/CV-Zhiti.pdf" target="_blank">Voir mon CV</a></p>
                 </div>
                 <div class="photo-cv-img">
                     <img class="photo-cv" src="../public/img/photo_cv.jpg" alt="Photo CV">
@@ -51,6 +51,8 @@
     </div>
 </body>
 <footer>
-
+    <a class="a-footer" href="https://github.com/Kzhiti" target="_blank"><img src="../public/img/github.png"></a>
+    <a class="a-footer" href="https://twitter.com/?lang=fr" target="_blank"><img src="../public/img/twitter.png"></a>
+    <a class="a-footer" href="https://fr.linkedin.com/" target="_blank"><img src="../public/img/linkedin.png"></a>
 </footer>
 </html>

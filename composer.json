@@ -11,7 +11,8 @@
         "psr-4": {
             "Controllers\\": "controllers",
             "Entities\\": "models/entities",
-            "Managers\\": "models/managers"
+            "Managers\\": "models/managers",
+            "App\\": "app"
         }
     }
 }

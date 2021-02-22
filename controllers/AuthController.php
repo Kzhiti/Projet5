@@ -3,8 +3,10 @@
 
 namespace Controllers;
 
+use App\Session;
+
 use Entities\User;
-use Managers\SessionFlash;
+
 use Managers\UserManager;
 
 class AuthController
@@ -21,14 +23,16 @@ class AuthController
         require('../views/login.php');
 
         if (isset($_POST['pseudo'])) {
+            $user = $this->user_manager->findUser($_POST['pseudo']);
             $error = 0;
 
             if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19) {
                 // $error++;
-                SessionFlash::sessionFlash("Erreur", "Pseudo Invalide");
+                SessionFlash::sessionFlash("Erreur",  "Pseudo Invalide");
             } else {
-                if (!($this->user_manager->findUser($_POST['pseudo']))) {
+                if (!($user)) {
                     // $error++;
+
                     SessionFlash::sessionFlash("Erreur", "Pseudo Introuvable");
                 }
             }
@@ -36,10 +40,11 @@ class AuthController
                 //  $error++;
                 SessionFlash::sessionFlash("Erreur", "Mot de passe invalide");
             }
-
+            if (!password_verify($_POST['password'], $user->getPassword())) {
+                SessionFlash::sessionFlash("Erreur", "Mot de passe incorrect");
+            }
 
             if (/*$error === 0*/!(isset($_SESSION['flash']))) {
-                $user = $this->user_manager->findUser($_POST['pseudo']);
                 $_SESSION['user'] = serialize($user);
                 header('Location: index.php');
                 return;
