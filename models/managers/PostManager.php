@@ -34,7 +34,7 @@ class PostManager
         $req->execute(array($title));
         $data = $req->fetch();
         if($data) {
-            return new Post($data);
+            return new Article($data);
         }
         return null;
     }

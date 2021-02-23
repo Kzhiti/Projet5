@@ -10,6 +10,22 @@ header {
     padding-left: 50px;
 }
 
+.date-modif {
+    font-size: 10px;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.descr {
+    font-size: 20px;
+    text-indent: 20px;
+    margin-left: 10px;
+}
+
+.author {
+    text-indent: 20px;
+}
+
 header a {
     width: auto;
     background: #edb77d;
@@ -30,6 +46,21 @@ header a {
 
 .post {
     text-align: center;
+}
+
+.post-input-title {
+    border: none;
+    font-size: 30px;
+}
+
+.post-input-descr {
+    border: none;
+    font-size: 20px;
+}
+
+.post-input-date {
+    border: none;
+    font-size: 10px;
 }
 
 .post-a {
@@ -313,6 +344,11 @@ body {
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
     -ms-border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.container-post button {
+    float: right;
 }
 
 .booking-content {

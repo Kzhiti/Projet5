@@ -34,6 +34,10 @@ if ($action != "") {
             $controller = new PostController();
             $controller->post();
             break;
+        case 'singlepost' :
+            $controller = new PostController();
+            $controller->singlePost();
+            break;
     }
 }
 else {

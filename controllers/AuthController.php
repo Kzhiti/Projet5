@@ -24,7 +24,6 @@ class AuthController
 
         if (isset($_POST['pseudo'])) {
             $user = $this->user_manager->findUser($_POST['pseudo']);
-            var_dump($user);
 
             if ($user == null) {
                 Session::setFlash("Erreur utilisateur introuvable", "Veuillez entrer un pseudo et un mot de passe valides");
@@ -47,6 +46,7 @@ class AuthController
 
                 if (!(isset($_SESSION['flash']))) {
                     $_SESSION['user'] = serialize($user);
+                    $_SESSION['pseudo'] = $_POST['pseudo'];
                     header('Location: index.php');
                     return;
                 } else {
