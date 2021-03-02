@@ -1,0 +1,18 @@
+{
+    "name": "kylia/projet5",
+    "authors": [
+        {
+            "name": "kzhiti",
+            "email": "kylianzh@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "controllers",
+            "Entities\\": "models/entities",
+            "Managers\\": "models/managers",
+            "App\\": "app"
+        }
+    }
+}
