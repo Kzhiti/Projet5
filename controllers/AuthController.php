@@ -45,7 +45,7 @@ class AuthController
                 }
 
                 if (!(isset($_SESSION['flash']))) {
-                    $_SESSION['user'] = serialize($user);
+                    $_SESSION['id'] = $user->getId();
                     $_SESSION['pseudo'] = $_POST['pseudo'];
                     header('Location: index.php');
                     return;

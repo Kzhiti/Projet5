@@ -4,10 +4,8 @@ namespace Controllers;
 
 use App\Session;
 
-use Entities\User;
 use Entities\Article;
-use Managers\PostManager;
-use Managers\UserManager;
+use Managers\{PostManager, UserManager};
 
 class PostController {
 
@@ -25,7 +23,6 @@ class PostController {
         echo '<br>';
         if (isset($_POST['titre'])) {
             $post = new Article();
-            $user = $this->user_manager->findUser($_SESSION['pseudo']);
             if (empty($_POST['titre'])) {
                 Session::setFlash("Erreur titre invalide", "Veuillez remplir le champ titre");
             }
@@ -35,7 +32,7 @@ class PostController {
             if (!(isset($_SESSION['flash']))) {
                 $post->setTitre($_POST['titre']);
                 $post->setDescription($_POST['descr']);
-                $post->setUser_id($user->getId());
+                $post->setUser_id($_SESSION['id']);
                 $this->post_manager->addPost($post);
                 header('Location: index.php?action=listpost');
             }

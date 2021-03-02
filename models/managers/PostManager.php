@@ -33,7 +33,7 @@ class PostManager
         $req = $this->db->prepare('SELECT * FROM article WHERE titre = ?');
         $req->execute(array($title));
         $data = $req->fetch();
-        if($data) {
+        if ($data) {
             return new Article($data);
         }
         return null;
@@ -41,7 +41,7 @@ class PostManager
 
     public function getAll()
     {
-        $req = $this->db->query('SELECT * FROM article');
+        $req = $this->db->query('SELECT * FROM article ORDER BY modifier_le DESC');
         $req->execute();
 
         return $req->fetchAll();

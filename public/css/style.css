@@ -5,6 +5,10 @@ header {
     background-color: #111111;
 }
 
+header a {
+    text-decoration: none;
+}
+
 .header_title {
     float: left;
     padding-left: 50px;
