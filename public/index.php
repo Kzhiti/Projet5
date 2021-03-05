@@ -5,6 +5,8 @@ require "../vendor/autoload.php";
 use Controllers\AuthController;
 use Controllers\ContactController;
 use Controllers\PostController;
+use Controllers\AdminController;
+
 
 $action = $_GET['action'] ?? "";
 
@@ -37,6 +39,22 @@ if ($action != "") {
         case 'singlepost' :
             $controller = new PostController();
             $controller->singlePost();
+            break;
+        case 'managing' :
+            $controller = new AdminController();
+            $controller->admin();
+            break;
+        case 'listuser' :
+            $controller = new AdminController();
+            $controller->listUser();
+            break;
+        case 'listcomment' :
+            $controller = new AdminController();
+            $controller->listComment();
+            break;
+        case 'rights' :
+            $controller = new AdminController();
+            $controller->giveRights();
             break;
     }
 }

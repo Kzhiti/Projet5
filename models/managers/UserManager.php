@@ -27,7 +27,6 @@ class UserManager
         $req->bindValue(':role', $user->getRole());
         $req->bindValue(':date_creation', date("d.m.y"));*/
         $req->execute(array($user->getPseudo(), $user->getPassword(), $user->getRole()));
-        echo"success ";
     }
 
     public function findUser($username)
@@ -59,5 +58,10 @@ class UserManager
         $req->execute();
 
         return $req->fetchAll();
+    }
+
+    public function changeRole($role, $pseudo) {
+        $req = $this->db->prepare('UPDATE user SET role = ? WHERE pseudo = ?');
+        $req->execute(array($role, $pseudo));
     }
 }

@@ -47,6 +47,7 @@ class AuthController
                 if (!(isset($_SESSION['flash']))) {
                     $_SESSION['id'] = $user->getId();
                     $_SESSION['pseudo'] = $_POST['pseudo'];
+                    $_SESSION['role'] = $user->getRole();
                     header('Location: index.php');
                     return;
                 } else {
@@ -58,7 +59,8 @@ class AuthController
 
     public function logout()
     {
-        unset($_SESSION['user']);
+        unset($_SESSION['id']);
+        unset($_SESSION['pseudo']);
         header('Location: index.php');
         return;
     }
