@@ -3,6 +3,7 @@
     <?php if(isset($_SESSION['pseudo']) && ($_SESSION['role'] == "Administrateur")) { ?>
         <div class="post">
             <a class="post-a" href="../public/index.php?action=post">Ajouter un article</a>
+            <a class="post-a" href="../public/index.php?action=updatelistpost">Modifier un article</a>
         </div>
     <?php } ?>
     <div class="container">

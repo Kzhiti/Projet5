@@ -46,4 +46,9 @@ class PostManager
 
         return $req->fetchAll();
     }
+
+    public function changePost($new_title, $new_description, $id) {
+        $req = $this->db->prepare('UPDATE article SET titre = ?, description = ? WHERE id = ?');
+        $req->execute(array($new_title, $new_description, $id));
+    }
 }

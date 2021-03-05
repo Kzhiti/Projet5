@@ -11,6 +11,7 @@ class PostController {
 
     private $post_manager;
     private $user_manager;
+    private $title;
 
     public function __construct()
     {
@@ -63,6 +64,50 @@ class PostController {
                        ';
             }
         }
+    }
+
+    public function updateListPost() {
+        require('../views/post.php');
+        $data = $this->post_manager->getAll();
+        if ($data) {
+            foreach ($data as $post) {
+                echo '<div class="container-post">
+                            <form id="booking-form2" action="../public/index.php?action=getupdatepost" method="POST">
+                                <input class="post-input-title" type="text" id="titre" name="titre" value="'. $post['titre'] .'">
+                                <br>
+                                <input class="post-input-descr" type="text" id="description" name="description" value="'. $post['description'] .'">
+                                <br>
+                                <input class="post-input-date" type="text" id="modifier_le" name="modifier_le" value="'. $post['modifier_le'] .'">
+                                <br>
+                                <button class="submit" type="submit">Modifier</button>
+                            </form>
+                       </div>
+                       <br>
+                       ';
+            }
+        }
+    }
+
+    public function getUpdatePost() {
+        require('../views/updatepost.php');
+        $article = $this->post_manager->findPost($_POST['titre']);
+        echo '<div class="container-post">
+                            <form id="booking-form2" action="../public/index.php?action=updatepost" method="POST">
+                                <input class="post-input-title" type="text" id="titre" name="titre" value="'. $_POST['titre'] .'">
+                                <br>
+                                <input class="post-input-descr" type="text" id="description" name="description" value="'. $_POST['description'] .'">
+                                <br>
+                                <input type="hidden" id="post_id" name="post_id" value="'. $article->getID() .'">
+                                <button class="submit" type="submit">Modifier</button>
+                            </form>
+                       </div>
+                       <br>
+                       ';
+    }
+
+    public function updatePost() {
+        $this->post_manager->changePost($_POST['titre'], $_POST['description'], $_POST['post_id']);
+        header('Location: index.php?action=listpost');
     }
 
     public function singlePost() {

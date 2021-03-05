@@ -36,6 +36,18 @@ if ($action != "") {
             $controller = new PostController();
             $controller->post();
             break;
+        case 'updatelistpost' :
+            $controller = new PostController();
+            $controller->updateListPost();
+            break;
+        case 'getupdatepost' :
+            $controller = new PostController();
+            $controller->getUpdatePost();
+            break;
+        case 'updatepost' :
+            $controller = new PostController();
+            $controller->updatePost();
+            break;
         case 'singlepost' :
             $controller = new PostController();
             $controller->singlePost();
