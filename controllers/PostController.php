@@ -5,18 +5,21 @@ namespace Controllers;
 use App\Session;
 
 use Entities\Article;
-use Managers\{PostManager, UserManager};
+use Entities\Commentaire;
+use Managers\{PostManager, UserManager, CommentManager};
+
 
 class PostController {
 
     private $post_manager;
     private $user_manager;
-    private $title;
+    private $comment_manager;
 
     public function __construct()
     {
         $this->post_manager = new PostManager();
         $this->user_manager = new UserManager();
+        $this->comment_manager = new CommentManager();
     }
 
     public function post() {
@@ -53,10 +56,11 @@ class PostController {
                             <form id="booking-form2" action="../public/index.php?action=singlepost" method="POST">
                                 <input class="post-input-title" type="text" id="titre" name="titre" value="'. $post['titre'] .'">
                                 <br>
-                                <input class="post-input-descr" type="text" id="description" name="description" value="'. $post['description'] .'">
+                                <input class="post-input-descr" type="textarea" id="description" name="description" value="'. $post['description'] .'">
                                 <br>
                                 <input class="post-input-date" type="text" id="modifier_le" name="modifier_le" value="'. $post['modifier_le'] .'">
                                 <br>
+                                <input type="hidden" id="article_id" name="article_id" value="'. $post['id'] .'">
                                 <button class="submit" type="submit">Détails</button>
                             </form>
                        </div>
@@ -75,7 +79,7 @@ class PostController {
                             <form id="booking-form2" action="../public/index.php?action=getupdatepost" method="POST">
                                 <input class="post-input-title" type="text" id="titre" name="titre" value="'. $post['titre'] .'">
                                 <br>
-                                <input class="post-input-descr" type="text" id="description" name="description" value="'. $post['description'] .'">
+                                <input class="post-input-descr" type="textarea" id="description" name="description" value="'. $post['description'] .'">
                                 <br>
                                 <input class="post-input-date" type="text" id="modifier_le" name="modifier_le" value="'. $post['modifier_le'] .'">
                                 <br>
@@ -95,7 +99,7 @@ class PostController {
                             <form id="booking-form2" action="../public/index.php?action=updatepost" method="POST">
                                 <input class="post-input-title" type="text" id="titre" name="titre" value="'. $_POST['titre'] .'">
                                 <br>
-                                <input class="post-input-descr" type="text" id="description" name="description" value="'. $_POST['description'] .'">
+                                <input class="post-input-descr" type="textarea" id="description" name="description" value="'. $_POST['description'] .'">
                                 <br>
                                 <input type="hidden" id="post_id" name="post_id" value="'. $article->getID() .'">
                                 <button class="submit" type="submit">Modifier</button>
@@ -118,7 +122,38 @@ class PostController {
                     <br><p class="descr">' . $singlepost->getDescription() . ' </p>
                     <br><p class="author">Auteur: ' . $user->getPseudo() . ' </p>
                     <br><p class="date-modif">Modifié le ' . $singlepost->getDateModif() . ' </p>
-              </div>
-              <br>';
+              </div>';
+              if (isset($_SESSION['id'])) {
+                  echo '<div class="container">
+                        <div class="booking-content">
+                            <div class="booking-form2">
+                                <h2>Laisser un Commentaire</h2>
+                               
+                                <form id="booking-form" action="../public/index.php?action=comment" method="POST">
+                    
+                                    <input type="textarea" id="descr_com" name="descr_com" placeholder="Votre Commentaire" required>
+                                    <br>
+                                    <input type="hidden" id="post_id" name="post_id" value="' . $singlepost->getID() . '">
+                                    <br>
+                                    <button class="submit" type="submit">Ajouter</button>
+                                </form>
+                            </div>
+                        </div>
+                  </div>
+                  <br>
+                  <br>
+                  <br>';
+              }
+    }
+
+    public function getCommentForm() {
+        if (isset($_POST['descr_com'])) {
+            $comment = new Commentaire();
+            $comment->setUser_id($_SESSION['id']);
+            $comment->setDescription($_POST['descr_com']);
+            $comment->setArticle_id($_POST['post_id']);
+            $this->comment_manager->addComment($comment);
+            header('Location: index.php?action=listpost');
+        }
     }
 }

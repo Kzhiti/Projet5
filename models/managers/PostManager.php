@@ -39,6 +39,17 @@ class PostManager
         return null;
     }
 
+    public function findPostByID($id)
+    {
+        $req = $this->db->prepare('SELECT * FROM article WHERE id = ?');
+        $req->execute(array($id));
+        $data = $req->fetch();
+        if ($data) {
+            return new Article($data);
+        }
+        return null;
+    }
+
     public function getAll()
     {
         $req = $this->db->query('SELECT * FROM article ORDER BY modifier_le DESC');
