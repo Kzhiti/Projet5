@@ -2,6 +2,7 @@
 session_start();
 require "../vendor/autoload.php";
 
+use App\Response;
 use Controllers\AuthController;
 use Controllers\ContactController;
 use Controllers\PostController;
@@ -37,8 +38,10 @@ if ($action != "") {
             $controller->post();
             break;
         case 'updatelistpost' :
+            //$admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->updateListPost();
+
             break;
         case 'getupdatepost' :
             $controller = new PostController();
@@ -68,8 +71,16 @@ if ($action != "") {
             $controller = new AdminController();
             $controller->giveRights();
             break;
+        case 'comment' :
+            $controller = new PostController();
+            $controller->getCommentForm();
+            break;
+        case 'validecomment' :
+            $controller = new AdminController();
+            $controller->valideComment();
+            break;
     }
 }
 else {
-    require ('../views/home.php');
+    Response::view('../views/home.php');
 }

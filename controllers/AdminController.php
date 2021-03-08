@@ -6,16 +6,18 @@ use App\Session;
 
 use Entities\Article;
 use Entities\User;
-use Managers\{PostManager, UserManager};
+use Managers\{CommentManager, PostManager, UserManager};
 
 class AdminController {
     private $user_manager;
     private $post_manager;
+    private $comment_manager;
 
     public function __construct()
     {
         $this->user_manager = new UserManager();
         $this->post_manager = new PostManager();
+        $this->comment_manager = new CommentManager();
     }
 
     public function admin() {
@@ -23,39 +25,23 @@ class AdminController {
     }
 
     public function listUser() {
-        require('../views/listuser.php');
         $data = $this->user_manager->getAll();
-        if ($data) {
-            foreach ($data as $post) {
-                if ($post['role'] == "Utilisateur") {
-                    echo '<div class="container-managing">
-                              <form id="booking-form2" action="../public/index.php?action=rights" method="POST">
-                                <input class="post-input-title" type="text" id="pseudo" name="pseudo" value="'. $post['pseudo'] .'">
-                                <br>
-                                <button class="submit" type="submit">Passer Administrateur</button>
-                              </form>
-                           </div><br>';
-                }
-                else {
-                    echo '<div class="container-managing">
-                              <form id="booking-form2" action="" method="POST">
-                                <input class="post-input-title" type="text" id="pseudo" name="pseudo" value="'. $post['pseudo'] .'">
-                                <br>
-                                <p class="managing">Administrateur</p>
-                              </form>
-                           </div><br>';
-                }
-            }
-        }
+        require('../views/listuser.php');
     }
 
     public function giveRights() {
         $this->user_manager->changeRole("Administrateur", $_POST['pseudo']);
-        $_SESSION['role'] = "Administrateur";
         header('Location: index.php?action=listuser');
     }
 
     public function listComment() {
+        $data = $this->comment_manager->getAllUnvalid();
         require('../views/listcomment.php');
     }
+
+    public function valideComment() {
+        $this->comment_manager->changeValide($_POST['id']);
+        header('Location: index.php?action=listcomment');
+    }
+
 }

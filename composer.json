@@ -12,7 +12,8 @@
             "Controllers\\": "controllers",
             "Entities\\": "models/entities",
             "Managers\\": "models/managers",
-            "App\\": "app"
+            "App\\": "app",
+            "Middleware\\": "middleware"
         }
     }
 }

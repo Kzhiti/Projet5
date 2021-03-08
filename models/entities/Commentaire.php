@@ -7,9 +7,24 @@ class Commentaire
     private $id;
     private $user_id;
     private $article_id;
-    private $decription;
+    private $description;
     private $date_creation;
     private $valide;
+
+    public function __construct(array $data = null) {
+        if($data) {
+            $this->hydrate($data);
+        }
+    }
+
+    private function hydrate($data) {
+        foreach($data as $key=>$value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
 
 
     public function getID()
@@ -46,6 +61,14 @@ class Commentaire
         $this->id = $new_id;
     }
 
+    public function setUser_id($new_id) {
+        $this->user_id = $new_id;
+    }
+
+    public function setArticle_id($new_id) {
+        $this->article_id = $new_id;
+    }
+
     public function setDescription($new_description)
     {
         $this->description = $new_description;
@@ -56,7 +79,7 @@ class Commentaire
         $this->date_creation = $new_date;
     }
 
-    public function setValid($new_valid)
+    public function setValide($new_valid)
     {
         $this->valide = $new_valid;
     }

@@ -11,10 +11,45 @@ header {
     padding-left: 50px;
 }
 
+.listcom {
+    width: 18%;
+    position: relative;
+    float: right;
+    background: #edb77d;
+    margin: 0 auto;
+    box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+}
+
+.com {
+    max-width: max-content;
+    background: #111111;
+    margin: 0 auto;
+    box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+}
+
 .date-modif {
     font-size: 10px;
     text-align: right;
     margin-right: 5px;
+    border: none;
 }
 
 .descr {
@@ -25,6 +60,7 @@ header {
 
 .author {
     text-indent: 20px;
+    border: none;
 }
 
 header a {
@@ -92,6 +128,19 @@ footer .a-managing {
 .post-input-title {
     border: none;
     font-size: 30px;
+    text-align: center;
+}
+
+.com-input-title {
+    border: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.post-input-text {
+    border: none;
+    font-size: 10px;
+    text-align: center;
 }
 
 .post-input-descr {
@@ -122,6 +171,27 @@ footer .a-managing {
     cursor: pointer;
     text-decoration: none;
 }
+
+textarea {
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
+}
+
+textarea::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+
+textarea::-webkit-scrollbar-track {
+    background: #ffffff;        /* color of the tracking area */
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #111111;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #ffffff;  /* creates padding around scroll thumb */
+}
+
 
 footer {
     position: fixed;
@@ -386,6 +456,42 @@ body {
     -o-border-radius: 10px;
     -ms-border-radius: 10px;
     margin-bottom: 50px;
+}
+
+.container-post-single {
+    position: relative;
+    width: 1150px;
+    background: #111111;
+    margin: 0 auto;
+    box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.container-comment-button {
+    width: 1150px;
+    background: #edb77d;
+    margin: 0 auto;
+    box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0px 10px 9.9px 0.1px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    margin-bottom: 50px;
+    text-align: right;
 }
 
 .container-managing {
