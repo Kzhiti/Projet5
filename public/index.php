@@ -38,7 +38,7 @@ if ($action != "") {
             $controller->post();
             break;
         case 'updatelistpost' :
-            $admin = new Middleware\Admin();
+            //$admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->updateListPost();
 

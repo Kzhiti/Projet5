@@ -31,9 +31,26 @@ class CommentManager
         $req->execute(array($user_id));
         $data = $req->fetch();
         if ($data) {
-            return new Article($data);
+            return new Commentaire($data);
         }
         return null;
+    }
+
+    public function findCommentByArticleId($article_id)
+    {
+        $req = $this->db->prepare('SELECT * FROM commentaire WHERE article_id = ?');
+        $req->execute(array($article_id));
+        $data = $req->fetch();
+        if ($data) {
+            return new Commentaire($data);
+        }
+        return null;
+    }
+
+    public function getAllValidById($article_id) {
+        $req = $this->db->prepare('SELECT * FROM commentaire WHERE article_id = ? AND valide = ? ORDER BY date_creation DESC');
+        $req->execute(array($article_id, 1));
+        return $req->fetchAll();
     }
 
     public function getAll()
@@ -45,7 +62,7 @@ class CommentManager
     }
 
     public function getAllUnvalid() {
-        $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 0');
+        $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 0 ORDER BY date_creation DESC');
         $req->execute();
 
         return $req->fetchAll();
