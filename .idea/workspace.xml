@@ -20,18 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28ae162-77c7-49eb-be67-375dc526e67c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/postupdate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/managers/CommentManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/managers/CommentManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/listcomment.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/listcomment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/listuser.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/listuser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/singlepost.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/singlepost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/updatepost.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/updatepost.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +102,8 @@
       <workItem from="1614967119640" duration="3175000" />
       <workItem from="1615183095033" duration="13749000" />
       <workItem from="1615197014395" duration="191000" />
-      <workItem from="1615201417241" duration="9017000" />
+      <workItem from="1615201417241" duration="9191000" />
+      <workItem from="1615219842456" duration="873000" />
     </task>
     <servers />
   </component>
