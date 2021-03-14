@@ -17,7 +17,7 @@ class Response
     }
 
     public static function redirect(string $url) {
-        header('location:'.$url);
+        header('Location: '.$url);
         return;
     }
 }

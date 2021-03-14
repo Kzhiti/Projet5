@@ -3,6 +3,8 @@
 
 namespace Controllers;
 
+use App\Response;
+
 class ContactController {
 
     public function contact() {
@@ -25,7 +27,8 @@ class ContactController {
                 mail('kylianzh@gmail.com', 'Prise de contact pour un projet', $message);
             }
         }
-        header('Location: index.php');
+        //header('Location: index.php');
+        Response::redirect('index.php');
         return;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use App\Response;
 use App\Session;
 
 use Entities\Article;
@@ -21,7 +22,8 @@ class AdminController {
     }
 
     public function admin() {
-        require('../views/managing.php');
+        //require('../views/managing.php');
+        Response::view('../views/managing.php');
     }
 
     public function listUser() {
@@ -31,7 +33,8 @@ class AdminController {
 
     public function giveRights() {
         $this->user_manager->changeRole("Administrateur", $_POST['pseudo']);
-        header('Location: index.php?action=listuser');
+        //header('Location: index.php?action=listuser');
+        Response::redirect('index.php?action=listuser');
     }
 
     public function listComment() {
@@ -41,7 +44,8 @@ class AdminController {
 
     public function valideComment() {
         $this->comment_manager->changeValide($_POST['id']);
-        header('Location: index.php?action=listcomment');
+        //header('Location: index.php?action=listcomment');
+        Response::redirect('index.php?action=listcomment');
     }
 
 }

@@ -15,7 +15,7 @@
                     <br>
                     <input class="post-input-descr" type="textarea" id="description" name="description" value="<?= $post['description'] ?>">
                     <br>
-                    <input class="post-input-date" type="text" id="modifier_le" name="modifier_le" value="<?= $post['modifier_le'] ?>">
+                    <input class="post-input-date" type="text" id="modifier_le" name="modifier_le" value="<?= date('d-m-Y', strtotime($post['modifier_le'])) ?>">
                     <br>
                     <input type="hidden" id="article_id" name="article_id" value=" $post['id'] ">
                     <button class="submit" type="submit">Détails</button>

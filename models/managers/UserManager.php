@@ -19,7 +19,6 @@ class UserManager
 
     public function addUser(User $user)
     {
-        var_dump($this->db);
         $req = $this->db->prepare('INSERT INTO user(pseudo, password, role, date_creation) 
                      VALUES(?,?,?,NOW())');
         /*$req->bindValue(':pseudo', $user->getPseudo());

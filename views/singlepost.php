@@ -14,7 +14,7 @@
         <div class="container-post-single"><h2><?= $singlepost->getTitre() ?></h2>
             <br><p class="descr"><?= $singlepost->getDescription() ?></p>
             <br><p class="author">Auteur: <?= $user->getPseudo() ?></p>
-            <br><p class="date-modif">Modifié le <?= $singlepost->getDateModif() ?></p>
+            <br><p class="date-modif">Modifié le <?= date('d-m-Y', strtotime($singlepost->getDateModif())) ?></p>
         </div>
     </div>
     <?php if (isset($_SESSION['id'])) { ?>
