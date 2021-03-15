@@ -4,7 +4,7 @@ namespace App;
 
 class Response
 {
-    const VIEW_403 = '../views/errors/403.php';
+    const VIEW_403 = '../views/403.php';
 
     public static function launch403() {
         header('HTTP/1.0 403 Forbidden');

@@ -29,6 +29,7 @@ class AdminController {
     public function listUser() {
         $data = $this->user_manager->getAll();
         require('../views/listuser.php');
+        //Response::view('../views/listuser.php');
     }
 
     public function giveRights() {

@@ -76,7 +76,7 @@ class AuthController
         if (isset($_POST['pseudo'])) {
 
             $user = new User();
-            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo'] || $_POST['pseudo'] == null) > 19) {
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19 || $_POST['pseudo'] == null) {
                 Session::setFlash("Erreur pseudo invalide",  "Veuillez réessayer");
             } else {
                 if ($this->user_manager->findUser($_POST['pseudo'])) {

@@ -4,18 +4,8 @@ namespace Managers;
 
 use Entities\User;
 
-class UserManager
+class UserManager extends Manager
 {
-    private $db;
-
-    public function __construct() {
-        try {
-            $this->db = new \PDO('mysql:host=127.0.0.1;port=3306;dbname=projet5', 'root', 'root', array(\PDO::ATTR_ERRMODE=>\PDO::ERRMODE_EXCEPTION));
-        }
-        catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
 
     public function addUser(User $user)
     {
@@ -55,8 +45,12 @@ class UserManager
     {
         $req = $this->db->query('SELECT * FROM user');
         $req->execute();
-
-        return $req->fetchAll();
+        $users = [];
+        $res = $req->fetchAll();
+        foreach ($res as $user) {
+            $users[] = new User($user);
+        }
+        return $users;
     }
 
     public function changeRole($role, $pseudo) {

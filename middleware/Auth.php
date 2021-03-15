@@ -4,14 +4,16 @@
 namespace Middleware;
 
 
-class Auth
+class Auth extends Middleware
 {
     public function __construct()
     {
-
+        if(!$this->allow()) {
+            Response::redirect('index.php?action=login');
+        }
     }
 
-    private function allow() {
-
+    protected function allow() : boolean {
+        return isset($_SESSION['id']);
     }
 }

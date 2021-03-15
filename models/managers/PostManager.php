@@ -4,18 +4,8 @@ namespace Managers;
 
 use Entities\Article;
 
-class PostManager
+class PostManager extends Manager
 {
-    private $db;
-
-    public function __construct()
-    {
-        try {
-            $this->db = new \PDO('mysql:host=127.0.0.1;port=3306;dbname=projet5', 'root', 'root', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
 
     public function addPost(Article $post)
     {

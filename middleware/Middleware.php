@@ -2,10 +2,9 @@
 
 
 namespace Middleware;
-use App\Response;
 
 
 abstract class Middleware
 {
-    protected abstract function allow() : boolean;
+    protected abstract function allow() : bool;
 }

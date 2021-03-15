@@ -6,7 +6,7 @@
                 <h2>Commentaires</h2>
                 <br>
                <?php foreach ($data as $com) {?>
-                   <p class="com"><?= $com['description'] ?></p>
+                   <p class="com"><?= htmlspecialchars($com['description']) ?></p>
                    <br>
                 <?php } ?>
             </div>

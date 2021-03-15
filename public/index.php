@@ -2,6 +2,9 @@
 session_start();
 require "../vendor/autoload.php";
 
+$dotenv = Dotenv\Dotenv::createImmutable('../');
+$dotenv->load();
+
 use App\Response;
 use Controllers\AuthController;
 use Controllers\ContactController;
@@ -38,7 +41,7 @@ if ($action != "") {
             $controller->post();
             break;
         case 'updatelistpost' :
-            //$admin = new Middleware\Admin();
+            $admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->updateListPost();
 
