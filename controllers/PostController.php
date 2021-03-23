@@ -74,7 +74,6 @@ class PostController {
         $singlepost = $this->post_manager->findPost($_POST['titre']);
         $user = $this->user_manager->findUserByID($singlepost->getUserID());
         $data = $this->comment_manager->getAllValidById($singlepost->getID());
-        //$data = $this->comment_manager->getAll();
         require('../views/singlepost.php');
     }
 

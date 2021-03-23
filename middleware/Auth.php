@@ -13,7 +13,7 @@ class Auth extends Middleware
         }
     }
 
-    protected function allow() : boolean {
+    protected function allow() : bool {
         return isset($_SESSION['id']);
     }
 }

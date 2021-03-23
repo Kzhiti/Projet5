@@ -17,10 +17,12 @@ $action = $_GET['action'] ?? "";
 if ($action != "") {
     switch ($action) {
         case 'register' :
+            $user = new Middleware\NotAuth();
             $controller = new AuthController();
             $controller->register();
             break;
         case 'login' :
+            $user = new Middleware\NotAuth();
             $controller = new AuthController();
             $controller->login();
             break;
@@ -37,6 +39,7 @@ if ($action != "") {
             $controller->listPost();
             break;
         case 'post' :
+            $admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->post();
             break;
@@ -47,6 +50,7 @@ if ($action != "") {
 
             break;
         case 'getupdatepost' :
+            $admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->getUpdatePost();
             break;
@@ -59,14 +63,17 @@ if ($action != "") {
             $controller->singlePost();
             break;
         case 'managing' :
+            $admin = new Middleware\Admin();
             $controller = new AdminController();
             $controller->admin();
             break;
         case 'listuser' :
+            $admin = new Middleware\Admin();
             $controller = new AdminController();
             $controller->listUser();
             break;
         case 'listcomment' :
+            $admin = new Middleware\Admin();
             $controller = new AdminController();
             $controller->listComment();
             break;
@@ -75,6 +82,7 @@ if ($action != "") {
             $controller->giveRights();
             break;
         case 'comment' :
+            $admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->getCommentForm();
             break;
