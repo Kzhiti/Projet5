@@ -2,34 +2,12 @@
 
 namespace Entities;
 
-class Article
+class Article extends Entity
 {
-    private $id;
     private $user_id;
     private $titre;
     private $description;
     private $modifier_le;
-
-
-    public function __construct(array $data = null) {
-        if($data) {
-            $this->hydrate($data);
-        }
-    }
-
-    private function hydrate($data) {
-        foreach($data as $key=>$value) {
-            $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
-    }
-
-    public function getID()
-    {
-        return $this->id;
-    }
 
     public function getUserID()
     {
@@ -49,10 +27,6 @@ class Article
     public function getDateModif()
     {
         return $this->modifier_le;
-    }
-
-    public function setId($new_id) {
-        $this->id = $new_id;
     }
 
     public function setUser_id($new_id) {

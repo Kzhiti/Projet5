@@ -44,8 +44,12 @@ class PostManager extends Manager
     {
         $req = $this->db->query('SELECT * FROM article ORDER BY modifier_le DESC');
         $req->execute();
-
-        return $req->fetchAll();
+        $posts = [];
+        $res = $req->fetchAll();
+        foreach ($res as $post) {
+            $posts[] = new Article($post);
+        }
+        return $posts;
     }
 
     public function changePost($new_title, $new_description, $id) {

@@ -5,8 +5,8 @@
             <div class="listcom">
                 <h2>Commentaires</h2>
                 <br>
-               <?php foreach ($data as $com) {?>
-                   <p class="com"><?= htmlspecialchars($com['description']) ?></p>
+               <?php foreach ($data as $comment) {?>
+                   <p class="com"><?= htmlspecialchars($comment->getDescription()) ?></p>
                    <br>
                 <?php } ?>
             </div>

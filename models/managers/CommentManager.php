@@ -40,29 +40,46 @@ class CommentManager extends Manager
     public function getAllValidById($article_id) {
         $req = $this->db->prepare('SELECT * FROM commentaire WHERE article_id = ? AND valide = ? ORDER BY date_creation DESC');
         $req->execute(array($article_id, 1));
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function getAll()
     {
         $req = $this->db->query('SELECT * FROM commentaire ORDER BY date_creation DESC');
         $req->execute();
-
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function getAllUnvalid() {
         $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 0 ORDER BY date_creation DESC');
         $req->execute();
-
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function getAllValid() {
         $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 1');
         $req->execute();
-
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function changeValide($comment_id) {
