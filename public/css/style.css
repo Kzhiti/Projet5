@@ -1,6 +1,7 @@
 header {
     text-align: right;
     height: 100px;
+    width: 100%;
     justify-content: center;
     background-color: #111111;
 }
@@ -418,13 +419,15 @@ h2 {
     clear: both; }
 
 body {
+    width: 100%;
     font-size: 14px;
     line-height: 1.8;
     color: #fff;
     background: #edb77d;
     font-weight: 400;
     font-family: Poppins;
-    margin: 0px; }
+    margin: 0px;
+}
 
 .main {
     padding: 115px 0;
@@ -810,6 +813,9 @@ li.init:after {
     z-index: 9; }
 
 @media screen and (max-width: 1200px) {
+    body {
+        width: fit-content;
+    }
     .container {
         width: calc( 100% - 30px);
         max-width: 100%;
@@ -839,6 +845,9 @@ li.init:after {
         border-bottom-left-radius: 0px;
         width: 100%; } }
 @media screen and (max-width: 480px) {
+    body {
+        width: fit-content;
+    }
     .radio-item {
         display: block;
         margin-bottom: 15px;
@@ -849,6 +858,12 @@ li.init:after {
 
     form {
         padding: 72px 40px 70px 40px; } }
+
+@media screen and (max-width: 1440px) {
+    .listcom {
+        float: none;
+    }
+}
 
 #header_title {
     float: left;
