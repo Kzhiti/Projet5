@@ -1,6 +1,7 @@
 <?php
 
 namespace Middleware;
+use App\Response;
 
 class Admin extends Middleware
 {
@@ -11,7 +12,7 @@ class Admin extends Middleware
         }
     }
 
-    protected function allow() : boolean {
+    protected function allow() : bool {
         return (isset($_SESSION['role']) && $_SESSION['role'] == "Administrateur");
     }
 }

@@ -2,33 +2,12 @@
 
 namespace Entities;
 
-class User
+class User extends Entity
 {
-    private $id;
     private $pseudo;
     private $password;
     private $role;
     private $date_creation;
-
-    public function __construct(array $data = null) {
-        if($data) {
-            $this->hydrate($data);
-        }
-    }
-
-    private function hydrate($data) {
-        foreach($data as $key=>$value) {
-            $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     public function getPseudo()
     {
@@ -48,10 +27,6 @@ class User
     public function getDateCreation()
     {
         return $this->date_creation;
-    }
-
-    public function setId($new_id) {
-        $this->id = $new_id;
     }
 
     public function setPseudo($new_pseudo)

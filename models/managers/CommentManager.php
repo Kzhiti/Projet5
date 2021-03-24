@@ -4,18 +4,8 @@ namespace Managers;
 
 use Entities\Commentaire;
 
-class CommentManager
+class CommentManager extends Manager
 {
-    private $db;
-
-    public function __construct()
-    {
-        try {
-            $this->db = new \PDO('mysql:host=127.0.0.1;port=3306;dbname=projet5', 'root', 'root', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
 
     public function addComment(Commentaire $comment)
     {
@@ -50,29 +40,46 @@ class CommentManager
     public function getAllValidById($article_id) {
         $req = $this->db->prepare('SELECT * FROM commentaire WHERE article_id = ? AND valide = ? ORDER BY date_creation DESC');
         $req->execute(array($article_id, 1));
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function getAll()
     {
         $req = $this->db->query('SELECT * FROM commentaire ORDER BY date_creation DESC');
         $req->execute();
-
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function getAllUnvalid() {
         $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 0 ORDER BY date_creation DESC');
         $req->execute();
-
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function getAllValid() {
         $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 1');
         $req->execute();
-
-        return $req->fetchAll();
+        $comments = [];
+        $res = $req->fetchAll();
+        foreach ($res as $comment) {
+            $comments[] = new Commentaire($comment);
+        }
+        return $comments;
     }
 
     public function changeValide($comment_id) {

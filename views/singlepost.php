@@ -5,16 +5,16 @@
             <div class="listcom">
                 <h2>Commentaires</h2>
                 <br>
-               <?php foreach ($data as $com) {?>
-                   <p class="com"><?= $com['description'] ?></p>
+               <?php foreach ($data as $comment) {?>
+                   <p class="com"><?= htmlspecialchars($comment->getDescription()) ?></p>
                    <br>
                 <?php } ?>
             </div>
         <?php } ?>
-        <div class="container-post-single"><h2><?= $singlepost->getTitre() ?></h2>
-            <br><p class="descr">'<?= $singlepost->getDescription() ?></p>
-            <br><p class="author">Auteur: <?= $user->getPseudo() ?></p>
-            <br><p class="date-modif">Modifié le <?= $singlepost->getDateModif() ?></p>
+        <div class="container-post-single"><h2><?= htmlspecialchars($singlepost->getTitre()) ?></h2>
+            <br><p class="descr"><?= htmlspecialchars($singlepost->getDescription()) ?></p>
+            <br><p class="author">Auteur: <?= htmlspecialchars($user->getPseudo()) ?></p>
+            <br><p class="date-modif">Modifié le <?= date('d-m-Y', strtotime(htmlspecialchars($singlepost->getDateModif()))) ?></p>
         </div>
     </div>
     <?php if (isset($_SESSION['id'])) { ?>

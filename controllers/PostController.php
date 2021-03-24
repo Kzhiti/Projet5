@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use App\Response;
 use App\Session;
 
 use Entities\Article;
@@ -38,10 +39,12 @@ class PostController {
                 $post->setDescription($_POST['descr']);
                 $post->setUser_id($_SESSION['id']);
                 $this->post_manager->addPost($post);
-                header('Location: index.php?action=listpost');
+                //header('Location: index.php?action=listpost');
+                Response::redirect('index.php?action=listpost');
             }
             else {
-                header('Location: index.php?action=post');
+                //header('Location: index.php?action=post');
+                Response::redirect('index.php?action=post');
             }
         }
     }
@@ -63,14 +66,14 @@ class PostController {
 
     public function updatePost() {
         $this->post_manager->changePost($_POST['titre'], $_POST['description'], $_POST['post_id']);
-        header('Location: index.php?action=listpost');
+        //header('Location: index.php?action=listpost');
+        Response::redirect('index.php?action=listpost');
     }
 
     public function singlePost() {
         $singlepost = $this->post_manager->findPost($_POST['titre']);
         $user = $this->user_manager->findUserByID($singlepost->getUserID());
         $data = $this->comment_manager->getAllValidById($singlepost->getID());
-        //$data = $this->comment_manager->getAll();
         require('../views/singlepost.php');
     }
 
@@ -81,7 +84,8 @@ class PostController {
             $comment->setDescription($_POST['descr_com']);
             $comment->setArticle_id($_POST['post_id']);
             $this->comment_manager->addComment($comment);
-            header('Location: index.php?action=listpost');
+            //header('Location: index.php?action=listpost');
+            Response::redirect('index.php?action=listpost');
         }
     }
 }

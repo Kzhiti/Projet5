@@ -3,6 +3,7 @@
 
 namespace Controllers;
 
+use App\Response;
 use App\Session;
 
 use Entities\User;
@@ -48,10 +49,12 @@ class AuthController
                     $_SESSION['id'] = $user->getId();
                     $_SESSION['pseudo'] = $_POST['pseudo'];
                     $_SESSION['role'] = $user->getRole();
-                    header('Location: index.php');
+                    //header('Location: index.php');
+                    Response::redirect('index.php');
                     return;
                 } else {
-                    header('Location: index.php?action=login');
+                    //header('Location: index.php?action=login');
+                    Response::redirect('index.php?action=login');
                 }
             }
         }
@@ -61,7 +64,9 @@ class AuthController
     {
         unset($_SESSION['id']);
         unset($_SESSION['pseudo']);
-        header('Location: index.php');
+        unset($_SESSION['role']);
+        //header('Location: index.php');
+        Response::redirect('index.php');
         return;
     }
 
@@ -71,7 +76,7 @@ class AuthController
         if (isset($_POST['pseudo'])) {
 
             $user = new User();
-            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo'] || $_POST['pseudo'] == null) > 19) {
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19 || $_POST['pseudo'] == null) {
                 Session::setFlash("Erreur pseudo invalide",  "Veuillez réessayer");
             } else {
                 if ($this->user_manager->findUser($_POST['pseudo'])) {
@@ -92,10 +97,12 @@ class AuthController
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $user->setPassword($password);
                 $this->user_manager->addUser($user);
-                header('Location: index.php?action=login');
+                //header('Location: index.php?action=login');
+                Response::redirect('index.php?action=login');
             }
             else {
-                header('Location: index.php?action=register');
+                //header('Location: index.php?action=register');
+                Response::redirect('index.php?action=register');
             }
         }
         return;

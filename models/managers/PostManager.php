@@ -4,18 +4,8 @@ namespace Managers;
 
 use Entities\Article;
 
-class PostManager
+class PostManager extends Manager
 {
-    private $db;
-
-    public function __construct()
-    {
-        try {
-            $this->db = new \PDO('mysql:host=127.0.0.1;port=3306;dbname=projet5', 'root', 'root', array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
-        } catch (\PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
 
     public function addPost(Article $post)
     {
@@ -54,12 +44,16 @@ class PostManager
     {
         $req = $this->db->query('SELECT * FROM article ORDER BY modifier_le DESC');
         $req->execute();
-
-        return $req->fetchAll();
+        $posts = [];
+        $res = $req->fetchAll();
+        foreach ($res as $post) {
+            $posts[] = new Article($post);
+        }
+        return $posts;
     }
 
     public function changePost($new_title, $new_description, $id) {
-        $req = $this->db->prepare('UPDATE article SET titre = ?, description = ? WHERE id = ?');
+        $req = $this->db->prepare('UPDATE article SET titre = ?, description = ?, modifier_le = NOW() WHERE id = ?');
         $req->execute(array($new_title, $new_description, $id));
     }
 }
