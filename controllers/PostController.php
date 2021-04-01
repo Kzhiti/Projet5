@@ -36,6 +36,7 @@ class PostController {
             }
             if (!(isset($_SESSION['flash']))) {
                 $post->setTitre($_POST['titre']);
+                $post->setChapo($_POST['chapo']);
                 $post->setDescription($_POST['descr']);
                 $post->setUser_id($_SESSION['id']);
                 $this->post_manager->addPost($post);

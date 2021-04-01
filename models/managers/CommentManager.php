@@ -61,12 +61,14 @@ class CommentManager extends Manager
     }
 
     public function getAllUnvalid() {
-        $req = $this->db->query('SELECT * FROM commentaire WHERE valide = 0 ORDER BY date_creation DESC');
+        $sql = 'SELECT c.*, u.pseudo, a.titre FROM commentaire c, article a, user u WHERE c.valide = 0 AND u.id = c.user_id AND a.id = c.article_id ORDER BY c.date_creation DESC';
+        $req = $this->db->query($sql);
         $req->execute();
+
         $comments = [];
         $res = $req->fetchAll();
         foreach ($res as $comment) {
-            $comments[] = new Commentaire($comment);
+           $comments[] = ['pseudo'=>$comment['pseudo'], 'a_titre'=>$comment['titre'], 'comment'=>new Commentaire($comment)];
         }
         return $comments;
     }

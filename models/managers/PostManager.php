@@ -9,13 +9,13 @@ class PostManager extends Manager
 
     public function addPost(Article $post)
     {
-        $req = $this->db->prepare('INSERT INTO article(user_id, titre, description, modifier_le) 
-                     VALUES(?,?,?,NOW())');
+        $req = $this->db->prepare('INSERT INTO article(user_id, titre, chapô, description, modifier_le) 
+                     VALUES(?,?,?,?,NOW())');
         /*$req->bindValue(':pseudo', $user->getPseudo());
         $req->bindValue(':password', $user->getPassword());
         $req->bindValue(':role', $user->getRole());
         $req->bindValue(':date_creation', date("d.m.y"));*/
-        $req->execute(array($post->getUserID(), $post->getTitre(), $post->getDescription()));
+        $req->execute(array($post->getUserID(), $post->getTitre(), $post->getChapo(), $post->getDescription()));
     }
 
     public function findPost($title)
@@ -52,8 +52,8 @@ class PostManager extends Manager
         return $posts;
     }
 
-    public function changePost($new_title, $new_description, $id) {
-        $req = $this->db->prepare('UPDATE article SET titre = ?, description = ?, modifier_le = NOW() WHERE id = ?');
-        $req->execute(array($new_title, $new_description, $id));
+    public function changePost($new_title, $new_chapo, $new_description, $id) {
+        $req = $this->db->prepare('UPDATE article SET titre = ?, chapo = ?, description = ?, modifier_le = NOW() WHERE id = ?');
+        $req->execute(array($new_title, $new_chapo, $new_description, $id));
     }
 }

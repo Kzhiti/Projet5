@@ -6,6 +6,7 @@ class Article extends Entity
 {
     private $user_id;
     private $titre;
+    private $chapo;
     private $description;
     private $modifier_le;
 
@@ -24,6 +25,10 @@ class Article extends Entity
         return $this->description;
     }
 
+    public function getChapo() {
+        return $this->chapo;
+    }
+
     public function getDateModif()
     {
         return $this->modifier_le;
@@ -36,6 +41,10 @@ class Article extends Entity
     public function setTitre($new_title)
     {
         $this->titre = $new_title;
+    }
+
+    public function setChapo($new_chapo) {
+        $this->chapo = $new_chapo;
     }
 
     public function setDescription($new_description)

@@ -8,7 +8,9 @@
                             ?>
                             <div class="container-managing">
                               <form id="booking-form2" action="../public/index.php?action=rights" method="POST">
-                                <input class="post-input-title" type="text" id="pseudo" name="pseudo" value="<?= htmlspecialchars($user->getPseudo()) ?>">
+                                <label class="post-input-title"><?= htmlspecialchars($user->getPseudo()) ?></label>
+                                <br>
+                                <input class="post-input-title" type="hidden" id="pseudo" name="pseudo" value="<?= htmlspecialchars($user->getPseudo()) ?>">
                                 <br>
                                 <button class="submit" type="submit">Passer Administrateur</button>
                               </form>
@@ -16,7 +18,7 @@
                        <?php }
                         else { ?>
                             <div class="container-managing">
-                                <input class="post-input-title" type="text" id="pseudo" name="pseudo" value="<?= htmlspecialchars($user->getPseudo()) ?>">
+                                <label class="post-input-title"><?= htmlspecialchars($user->getPseudo()) ?></label>
                                 <br>
                                 <p class="managing">Administrateur</p>
                             </div>
