@@ -22,19 +22,16 @@ class AdminController {
     }
 
     public function admin() {
-        //require('../views/managing.php');
         Response::view('../views/managing.php');
     }
 
     public function listUser() {
         $data = $this->user_manager->getAll();
         require('../views/listuser.php');
-        //Response::view('../views/listuser.php');
     }
 
     public function giveRights() {
         $this->user_manager->changeRole("Administrateur", $_POST['pseudo']);
-        //header('Location: index.php?action=listuser');
         Response::redirect('index.php?action=listuser');
     }
 
@@ -45,7 +42,6 @@ class AdminController {
 
     public function valideComment() {
         $this->comment_manager->changeValide($_POST['id']);
-        //header('Location: index.php?action=listcomment');
         Response::redirect('index.php?action=listcomment');
     }
 

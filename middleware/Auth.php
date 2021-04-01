@@ -3,6 +3,9 @@
 
 namespace Middleware;
 
+use App\Response;
+
+
 
 class Auth extends Middleware
 {

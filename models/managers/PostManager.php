@@ -11,10 +11,6 @@ class PostManager extends Manager
     {
         $req = $this->db->prepare('INSERT INTO article(user_id, titre, chapô, description, modifier_le) 
                      VALUES(?,?,?,?,NOW())');
-        /*$req->bindValue(':pseudo', $user->getPseudo());
-        $req->bindValue(':password', $user->getPassword());
-        $req->bindValue(':role', $user->getRole());
-        $req->bindValue(':date_creation', date("d.m.y"));*/
         $req->execute(array($post->getUserID(), $post->getTitre(), $post->getChapo(), $post->getDescription()));
     }
 

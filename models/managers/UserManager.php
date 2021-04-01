@@ -11,10 +11,6 @@ class UserManager extends Manager
     {
         $req = $this->db->prepare('INSERT INTO user(pseudo, password, role, date_creation) 
                      VALUES(?,?,?,NOW())');
-        /*$req->bindValue(':pseudo', $user->getPseudo());
-        $req->bindValue(':password', $user->getPassword());
-        $req->bindValue(':role', $user->getRole());
-        $req->bindValue(':date_creation', date("d.m.y"));*/
         $req->execute(array($user->getPseudo(), $user->getPassword(), $user->getRole()));
     }
 
