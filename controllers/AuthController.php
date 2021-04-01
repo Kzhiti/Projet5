@@ -26,18 +26,18 @@ class AuthController
         if (isset($_POST['pseudo'])) {
             $user = $this->user_manager->findUser($_POST['pseudo']);
 
-            if ($user == null) {
+            if ($user === null) {
                 Session::setFlash("Erreur utilisateur introuvable", "Veuillez entrer un pseudo et un mot de passe valides");
             }
             else {
-                if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo'] || $_POST['pseudo'] == null) > 19) {
+                if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo'] || $_POST['pseudo'] === null) > 19) {
                     Session::setFlash("Erreur pseudo invalide", "Veuillez réessayer");
                 } else {
                     if (!($user)) {
                         Session::setFlash("Erreur pseudo introuvable", "Veuillez réessayer");
                     }
                 }
-                if (empty($_POST['password']) || $_POST['password'] == null) {
+                if (empty($_POST['password']) || $_POST['password'] === null) {
                     Session::setFlash("Erreur mot de passe invalide", "Veuillez réessayer");
                 } else {
                     if (!password_verify($_POST['password'], $user->getPassword())) {
@@ -49,11 +49,9 @@ class AuthController
                     $_SESSION['id'] = $user->getId();
                     $_SESSION['pseudo'] = $_POST['pseudo'];
                     $_SESSION['role'] = $user->getRole();
-                    //header('Location: index.php');
                     Response::redirect('index.php');
                     return;
                 } else {
-                    //header('Location: index.php?action=login');
                     Response::redirect('index.php?action=login');
                 }
             }
@@ -65,7 +63,6 @@ class AuthController
         unset($_SESSION['id']);
         unset($_SESSION['pseudo']);
         unset($_SESSION['role']);
-        //header('Location: index.php');
         Response::redirect('index.php');
         return;
     }
@@ -76,14 +73,14 @@ class AuthController
         if (isset($_POST['pseudo'])) {
 
             $user = new User();
-            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19 || $_POST['pseudo'] == null) {
+            if (empty($_POST['pseudo']) || mb_strlen($_POST['pseudo']) < 3 || mb_strlen($_POST['pseudo']) > 19 || $_POST['pseudo'] === null) {
                 Session::setFlash("Erreur pseudo invalide",  "Veuillez réessayer");
             } else {
                 if ($this->user_manager->findUser($_POST['pseudo'])) {
                     Session::setFlash("Erreur pseudo déjà utilisé", "Veuillez réessayer");
                 }
             }
-            if (empty($_POST['password']) || $_POST['password'] == null) {
+            if (empty($_POST['password']) || $_POST['password'] === null) {
                 Session::setFlash("Erreur mot de passe invalide", "Veuillez réessayer");
             }
 
@@ -97,11 +94,9 @@ class AuthController
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $user->setPassword($password);
                 $this->user_manager->addUser($user);
-                //header('Location: index.php?action=login');
                 Response::redirect('index.php?action=login');
             }
             else {
-                //header('Location: index.php?action=register');
                 Response::redirect('index.php?action=register');
             }
         }
