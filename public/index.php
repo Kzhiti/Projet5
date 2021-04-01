@@ -82,7 +82,6 @@ if ($action != "") {
             $controller->giveRights();
             break;
         case 'comment' :
-            $admin = new Middleware\Admin();
             $controller = new PostController();
             $controller->getCommentForm();
             break;

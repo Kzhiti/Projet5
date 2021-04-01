@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width"/>
     <title><?= $title?></title>
     <link href="../public/css/style.css" rel="stylesheet" />
+    <link rel="icon" href="../public/favicon/favicon.png" />
+
 </head>
 <body>
 <header>
