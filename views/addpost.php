@@ -16,6 +16,8 @@
 
                     <input type="text" id="titre" name="titre" placeholder="Titre">
                     <br>
+                    <input type="text" id="chapo" name="chapo" placeholder="Chapô">
+                    <br>
                     <input type="textarea" id="descr" name="descr" placeholder="Description">
                     <br>
                     <button class="submit" type="submit">Ajouter</button>

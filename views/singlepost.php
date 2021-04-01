@@ -12,6 +12,7 @@
             </div>
         <?php } ?>
         <div class="container-post-single"><h2><?= htmlspecialchars($singlepost->getTitre()) ?></h2>
+            <br><p class="descr"><?= htmlspecialchars($singlepost->getChapo()) ?></p>
             <br><p class="descr"><?= htmlspecialchars($singlepost->getDescription()) ?></p>
             <br><p class="author">Auteur: <?= htmlspecialchars($user->getPseudo()) ?></p>
             <br><p class="date-modif">Modifié le <?= date('d-m-Y', strtotime(htmlspecialchars($singlepost->getDateModif()))) ?></p>

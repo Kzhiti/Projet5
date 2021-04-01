@@ -11,11 +11,21 @@
             foreach ($data as $post) { ?>
             <div class="container-post">
                 <form id="booking-form2" action="../public/index.php?action=singlepost" method="POST">
-                    <input class="post-input-title" type="text" id="titre" name="titre" value="<?= htmlspecialchars($post->getTitre()) ?>">
+                    <label class="post-input-title"><?= htmlspecialchars($post->getTitre()) ?></label>
                     <br>
-                    <input class="post-input-descr" type="textarea" id="description" name="description" value="<?= htmlspecialchars($post->getDescription()) ?>">
+                    <input class="post-input-title" type="hidden" id="titre" name="titre" value="<?= htmlspecialchars($post->getTitre()) ?>">
                     <br>
-                    <input class="post-input-date" type="text" id="modifier_le" name="modifier_le" value="<?= date('d-m-Y', strtotime($post->getDateModif())) ?>">
+                    <label class="post-input-descr"><?= htmlspecialchars($post->getChapo()) ?></label>
+                    <br>
+                    <input class="post-input-descr" type="hidden" id="chapo" name="chapo" value="<?= htmlspecialchars($post->getChapo()) ?>">
+                    <br>
+                    <label class="post-input-descr"><?= htmlspecialchars($post->getDescription()) ?></label>
+                    <br>
+                    <input class="post-input-descr" type="hidden" id="description" name="description" value="<?= htmlspecialchars($post->getDescription()) ?>">
+                    <br>
+                    <label class="post-input-date"><?= date('d-m-Y', strtotime($post->getDateModif())) ?></label>
+                    <br>
+                    <input class="post-input-date" type="hidden" id="modifier_le" name="modifier_le" value="<?= date('d-m-Y', strtotime($post->getDateModif())) ?>">
                     <br>
                     <input type="hidden" id="article_id" name="article_id" value="<?php $post->getId() ?>">
                     <button class="submit" type="submit">Détails</button>

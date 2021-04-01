@@ -132,7 +132,6 @@ footer .a-managing {
 }
 
 .post-input-title {
-    border: none;
     font-size: 30px;
     text-align: center;
 }
@@ -144,18 +143,15 @@ footer .a-managing {
 }
 
 .post-input-text {
-    border: none;
     font-size: 10px;
     text-align: center;
 }
 
 .post-input-descr {
-    border: none;
     font-size: 20px;
 }
 
 .post-input-date {
-    border: none;
     font-size: 10px;
 }
 
