@@ -810,7 +810,7 @@ li.init:after {
 
 @media screen and (max-width: 1200px) {
     body {
-        width: fit-content;
+        width: 1200px;
     }
     .container {
         width: calc( 100% - 30px);
@@ -842,7 +842,7 @@ li.init:after {
         width: 100%; } }
 @media screen and (max-width: 480px) {
     body {
-        width: fit-content;
+        width: 1200px;
     }
     .radio-item {
         display: block;
