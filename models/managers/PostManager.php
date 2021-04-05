@@ -9,7 +9,7 @@ class PostManager extends Manager
 
     public function addPost(Article $post)
     {
-        $req = $this->db->prepare('INSERT INTO article(user_id, titre, chapô, description, modifier_le) 
+        $req = $this->db->prepare('INSERT INTO article(user_id, titre, chapo, description, modifier_le) 
                      VALUES(?,?,?,?,NOW())');
         $req->execute(array($post->getUserID(), $post->getTitre(), $post->getChapo(), $post->getDescription()));
     }
