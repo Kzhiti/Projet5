@@ -11,6 +11,10 @@ ob_start(); ?>
             <input type="hidden" id="post_id" name="post_id" value="<?= $article->getID() ?>">
             <button class="submit" type="submit">Confirmer</button>
         </form>
+        <form id="booking-form2" action="../public/index.php?action=deletepost" method="POST">
+            <input type="hidden" id="post_id" name="post_id" value="<?= $article->getID() ?>">
+            <button class="submit" type="submit">Supprimer</button>
+        </form>
     </div>
 <?php $content = ob_get_clean();
 require'layout.php'; ?>

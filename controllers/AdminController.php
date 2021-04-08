@@ -45,4 +45,9 @@ class AdminController {
         Response::redirect('index.php?action=listcomment');
     }
 
+    public function getDeleteComment() {
+        $this->comment_manager->deleteComment($_POST['comment_id']);
+        Response::redirect('index.php?action=listcomment');
+    }
+
 }

@@ -88,6 +88,25 @@ header a {
     cursor: pointer;
 }
 
+.delete-a {
+    text-decoration: none;
+    width: auto;
+    background: #edb77d;
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    cursor: pointer;
+}
+
 footer .a-managing {
     text-decoration: none;
     width: auto;

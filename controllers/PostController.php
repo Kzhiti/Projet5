@@ -69,6 +69,11 @@ class PostController {
         Response::redirect('index.php?action=listpost');
     }
 
+    public function getDeletePost() {
+        $this->post_manager->deletePost($_POST['post_id']);
+        Response::redirect('index.php?action=listpost');
+    }
+
     public function singlePost() {
         $singlepost = $this->post_manager->findPost($_POST['titre']);
         $user = $this->user_manager->findUserByID($singlepost->getUserID());
