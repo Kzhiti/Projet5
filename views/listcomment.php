@@ -20,6 +20,10 @@ ob_start();
                         <input type="hidden" id="id" name="id" value="<?= $data['comment']->getId() ?>">
                         <button class="submit" type="submit">Valider le Commentaire</button>
                     </form>
+                    <form id="booking-form2" action="../public/index.php?action=deletecomment" method="POST">
+                        <input type="hidden" id="comment_id" name="comment_id" value="<?= $data['comment']->getId() ?>">
+                        <button class="submit" type="submit">Supprimer</button>
+                    </form>
                 </div><br>
    <?php }
     }

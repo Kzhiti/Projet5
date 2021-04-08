@@ -52,4 +52,9 @@ class PostManager extends Manager
         $req = $this->db->prepare('UPDATE article SET titre = ?, chapo = ?, description = ?, modifier_le = NOW() WHERE id = ?');
         $req->execute(array($new_title, $new_chapo, $new_description, $id));
     }
+
+    public function deletePost($id) {
+        $req = $this->db->prepare('DELETE FROM article WHERE id = ?');
+        $req->execute(array($id));
+    }
 }

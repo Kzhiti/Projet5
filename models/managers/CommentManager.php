@@ -88,4 +88,9 @@ class CommentManager extends Manager
         $req = $this->db->prepare('UPDATE commentaire SET valide = 1 WHERE id = ?');
         $req->execute(array($comment_id));
     }
+
+    public function deleteComment($id) {
+        $req = $this->db->prepare('DELETE FROM commentaire WHERE id = ?');
+        $req->execute(array($id));
+    }
 }

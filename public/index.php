@@ -89,6 +89,14 @@ if ($action != "") {
             $controller = new AdminController();
             $controller->valideComment();
             break;
+        case 'deletepost' :
+            $controller = new PostController();
+            $controller->getDeletePost();
+            break;
+        case 'deletecomment' :
+            $controller = new AdminController();
+            $controller->getDeleteComment();
+            break;
     }
 }
 else {
